@@ -1,0 +1,23 @@
+<div>
+	<div [dragula]="'lista-tareas'" [(dragulaModel)]="items">
+		<div class="fila" *ngFor="let item of items; let i = index">
+			<div *ngIf="!editar[i]">
+				{{ item.descripcion }} {{ item.orden }}
+			</div>
+			<div *ngIf="editar[i]">
+				<input type="text" [(ngModel)]="todoDescripcionEditado">
+			</div>
+			<button (click)="activarEdicion(item, i)" *ngIf="!editar[i]">
+				E
+			</button>
+			<button (click)="editarTodo(item, i)" *ngIf="editar[i]">
+				G
+			</button>
+			<button (click)="delete(item)">
+				X
+			</button>
+		</div>
+	</div>
+	<input [(ngModel)]="nuevoTodo">
+	<button (click)="crearTodo()">crear</button>
+</div>

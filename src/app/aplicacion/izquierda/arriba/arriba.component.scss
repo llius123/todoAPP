@@ -1,0 +1,17 @@
+//Lo mas pequeño que se puede hacer el calendario
+:host {
+	::ng-deep .ui-datepicker {
+		padding: 0;
+	}
+	::ng-deep .ui-state-default {
+		padding: 0;
+	}
+}
+
+.izquierda-arriba-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

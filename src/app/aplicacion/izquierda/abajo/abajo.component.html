@@ -1,0 +1,10 @@
+<div class="izquierda-abajo-container">
+	<div class="lista" *ngFor="let hora of horas">
+		<div class="hora">
+			{{ hora.hora }}
+		</div>
+		<div class="accion">
+			<app-izquierda-abajo-fila [objeto]="hora.objeto"></app-izquierda-abajo-fila>
+		</div>
+	</div>
+</div>

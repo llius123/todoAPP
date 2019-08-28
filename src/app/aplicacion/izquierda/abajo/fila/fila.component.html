@@ -1,0 +1,20 @@
+<div *ngIf="isArray()">
+	<div *ngFor="let objeto of objetos">
+		{{ objeto.descripcion }}
+		<button>
+			E
+		</button>
+		<button>
+			X
+		</button>
+	</div>
+</div>
+<div *ngIf="!isArray()">
+	{{ objetos }}
+	<button>
+		E
+	</button>
+	<button>
+		X
+	</button>
+</div>
