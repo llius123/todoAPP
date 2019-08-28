@@ -25,10 +25,12 @@ export class CentroComponent implements OnInit, OnDestroy {
 	public todoDescripcionEditado: string;
 
 	ngOnInit(): void {
-		this.centroService.getAllTodo().subscribe( ( resp: Todo[] ) => {
-			this.items = resp;
-			this.ordenarListaTodo();
-		} );
+		console.log('hopla')
+		this.centroService.getAllTodo().then(resp => {console.log(resp)});
+		// this.centroService.getAllTodo().subscribe( ( resp: Todo[] ) => {
+		// 	this.items = resp;
+		// 	this.ordenarListaTodo();
+		// } );
 	}
 
 	ngOnDestroy(): void {
