@@ -1,40 +1,44 @@
 import { Injectable } from "@angular/core";
-import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { DatabaseService } from "src/app/data-access/database.service";
 import { Todo } from "src/app/data-access/entities/todo.entity";
+import { Connection, Repository } from "typeorm";
 
-@Injectable({
+@Injectable( {
 	providedIn: "root"
-})
+} )
 export class CentroService {
-	constructor(private databaserService: DatabaseService) {}
+	constructor( private databaserService: DatabaseService ) { }
 
 	public async getAllTodo(): Promise<any> {
-		return	await this.databaserService.connection.then(connection => {
-				return connection
-				.createQueryBuilder()
-				.select("todo")
-				.from(Todo, 'todo')
-				.getRawMany();
-			});
+		let resp = "";
+
+		await this.databaserService.connection.then( connection => {
+			return connection
+				.createQueryRunner().query( `
+				SELECT * from todo
+			`).then( data => {
+				// console.log(data)
+					resp = data;
+				} );
+		} );
+		console.log(resp)
+		return resp;
 	}
 
-	public createTodo(todo: Todo): Observable<Todo> {
+	public createTodo( todo: Todo ): void {
 		// return this.httpClient.post<Todo>(environment.apiPath + "/todo", todo);
 	}
 
-	public editTodo(todo: Todo): Observable<Todo> {
+	public editTodo( todo: Todo ): void {
 		// return this.httpClient.put<Todo>(environment.apiPath + "/todo", todo);
 	}
 
-	public editAllTodo(todo: Todo[]): Observable<Todo[]> {
+	public editAllTodo( todo: Todo[] ): void {
 		// return this.httpClient.put<Todo[]>(environment.apiPath + "/todo/editAllTodo", todo);
 	}
 
-	public deleteTodo(todo: Todo): Observable<any> {
-		const param: HttpParams = new HttpParams().append("id", todo.id.toString());
-		return this.httpClient.delete<any>(environment.apiPath + "/todo", {params: param});
+	public deleteTodo( todo: Todo ): void {
+		// const param: HttpParams = new HttpParams().append("id", todo.id.toString());
+		// return this.httpClient.delete<any>(environment.apiPath + "/todo", {params: param});
 	}
 }

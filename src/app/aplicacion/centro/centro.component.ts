@@ -26,7 +26,7 @@ export class CentroComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
 		console.log('hopla')
-		this.centroService.getAllTodo().then(resp => {console.log(resp)});
+		console.log(this.centroService.getAllTodo());
 		// this.centroService.getAllTodo().subscribe( ( resp: Todo[] ) => {
 		// 	this.items = resp;
 		// 	this.ordenarListaTodo();
@@ -46,7 +46,7 @@ export class CentroComponent implements OnInit, OnDestroy {
 			}
 			i++;
 		} );
-		this.centroService.deleteTodo( objetoTodoAEliminar ).subscribe( ( resp: any ) => { } );
+		// this.centroService.deleteTodo( objetoTodoAEliminar ).subscribe( ( resp: any ) => { } );
 	}
 
 	public ordenarListaTodo(): void {
@@ -62,11 +62,11 @@ export class CentroComponent implements OnInit, OnDestroy {
 			evento_id: null,
 			orden: ultimoElementoOrden
 		};
-		this.centroService.createTodo( todo ).subscribe(
-			( resp: Todo ) => {
-				this.items.push( resp );
-			}
-		);
+		// this.centroService.createTodo( todo ).subscribe(
+		// 	( resp: Todo ) => {
+		// 		this.items.push( resp );
+		// 	}
+		// );
 	}
 	public reOrdenar( todoArray: Todo[] ): void {
 		let orden: number;
@@ -75,7 +75,7 @@ export class CentroComponent implements OnInit, OnDestroy {
 			elementoTodo.orden = orden;
 			orden++;
 		} );
-		this.centroService.editAllTodo( todoArray ).subscribe( ( resp: Todo[] ) => { } );
+		// this.centroService.editAllTodo( todoArray ).subscribe( ( resp: Todo[] ) => { } );
 	}
 
 	public activarEdicion( todo: Todo,  index: number ): void {
@@ -90,8 +90,8 @@ export class CentroComponent implements OnInit, OnDestroy {
 
 	public editarTodo( todo: Todo, index: number ): void {
 		todo.descripcion = this.todoDescripcionEditado;
-		this.centroService.editTodo( todo ).subscribe( ( resp: Todo ) => {
-			this.editar[ index ] = false;
-		} );
+		// this.centroService.editTodo( todo ).subscribe( ( resp: Todo ) => {
+		// 	this.editar[ index ] = false;
+		// } );
 	}
 }

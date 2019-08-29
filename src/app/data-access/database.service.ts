@@ -18,7 +18,7 @@ export class DatabaseService {
             database: 'database.sqlite',
             entities: [User],
             synchronize: true,
-            logging: 'all',
+            // logging: 'all',
         };
         this.connection = createConnection(this.options);
     }
