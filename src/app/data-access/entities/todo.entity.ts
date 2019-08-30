@@ -1,7 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from "typeorm";
 
 @Entity()
-export class Todo {
+export class Todo extends BaseEntity{
 	@PrimaryGeneratedColumn()
 	id: number;
 
@@ -10,4 +10,7 @@ export class Todo {
 
 	@Column( { nullable: true } )
 	evento_id: number;
+
+	@Column()
+	orden: number;
 }
