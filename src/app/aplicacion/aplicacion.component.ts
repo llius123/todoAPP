@@ -7,7 +7,6 @@ import { DatabaseService } from "../data-access/database.service";
 	styleUrls: ["./aplicacion.component.scss"]
 })
 export class AplicacionComponent implements OnInit{
-	public displayModalAccionHora: boolean = false;
 
 	constructor(private databaseService: DatabaseService) {}
 	ngOnInit(): void {

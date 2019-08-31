@@ -25,15 +25,20 @@ export class CentroComponent implements OnInit, OnDestroy {
 	public editar: Array<boolean> = [];
 	public todoDescripcionEditado: string;
 
+	public displayModalAccionHora: boolean;
+
 	async ngOnInit(): Promise<void> {
+		//Obtengo todos los TODO de la bbdd
 		this.items = await this.centroService.getAllTodo();
+
+		//Los ordeno
 		this.ordenarListaTodo();
+
+		//Inicializo el modal a false para que este escondido
+		this.displayModalAccionHora = false;
 	}
 
-	ngOnDestroy(): void {
-		this.dragula.unsubscribe();
-	}
-
+	//Elimino un TODO
 	public async delete( objetoTodoAEliminar: TodoInterface ): Promise<void> {
 		let i: number;
 		i = 0;
@@ -46,12 +51,15 @@ export class CentroComponent implements OnInit, OnDestroy {
 		await this.centroService.deleteTodo( objetoTodoAEliminar );
 	}
 
+	//Ordeno la lista de TODO
 	public async ordenarListaTodo(): Promise<void> {
 		this.items.sort( ( a: TodoInterface, b: TodoInterface ) => {
 			return a.orden - b.orden;
 		} );
 		await this.centroService.editAllTodo( this.items );
 	}
+
+	//Creo un nuevo TOdo
 	public async crearTodo(): Promise<void> {
 		let ultimoElementoOrden: number;
 		if ( this.items[ this.items.length - 1 ] !== undefined ) {
@@ -68,6 +76,8 @@ export class CentroComponent implements OnInit, OnDestroy {
 		await this.centroService.createTodo( todo );
 		this.items = await this.centroService.getAllTodo();
 	}
+
+	//Ordenop la lista de TODO dependiendo del aprametro ordenacion que tiene el objeto TODO
 	public async reOrdenar( todoArray: TodoInterface[] ): Promise<void> {
 		let orden: number;
 		orden = 0;
@@ -78,6 +88,7 @@ export class CentroComponent implements OnInit, OnDestroy {
 		await this.centroService.editAllTodo( todoArray );
 	}
 
+	//Activo la edicion y desactivo todas las otras
 	public activarEdicion( todo: TodoInterface, index: number ): void {
 		this.editar[ index ] = true;
 		this.todoDescripcionEditado = todo.descripcion;
@@ -88,10 +99,24 @@ export class CentroComponent implements OnInit, OnDestroy {
 		} );
 	}
 
+	//Edito la descripcion del todo
 	public editarTodo( todo: TodoInterface, index: number ): void {
 		todo.descripcion = this.todoDescripcionEditado;
-		// this.centroService.editTodo( todo ).subscribe( ( resp: Todo ) => {
-		// 	this.editar[ index ] = false;
-		// } );
+		this.items.forEach( async (element: TodoInterface, i: number) => {
+			if ( element.id === todo.id ) {
+				this.items[i].descripcion = todo.descripcion;
+				await this.centroService.editTodo(todo);
+				this.editar.forEach( ( elemento: any, indexForEach: number ) => {
+					this.editar[ indexForEach ] = false;
+				} );
+			}
+		});
+	}
+
+	public expandirTarjeta() {
+
+	}
+	ngOnDestroy(): void {
+		this.dragula.unsubscribe();
 	}
 }

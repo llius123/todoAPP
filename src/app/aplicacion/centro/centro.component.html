@@ -1,6 +1,6 @@
 <div>
 	<div [dragula]="'lista-tareas'" [(dragulaModel)]="items">
-		<div class="fila" *ngFor="let item of items; let i = index">
+		<div class="fila" *ngFor="let item of items; let i = index" (click)="expandirTarjeta(item)">
 			<div *ngIf="!editar[i]">
 				{{ item.descripcion }} {{ item.orden }}
 			</div>
@@ -21,3 +21,6 @@
 	<input [(ngModel)]="nuevoTodo">
 	<button (click)="crearTodo()">crear</button>
 </div>
+<p-dialog [(visible)]="displayModalAccionHora" [draggable]="false" [resizable]="false" [modal]="true">
+	Content
+</p-dialog>
