@@ -19,24 +19,22 @@ export class CentroComponent implements OnInit, OnDestroy {
 		);
 	}
 	public dragula = new Subscription();
-	public items: Array<TodoInterface> = [];
+	public items: TodoInterface[];
 	public nuevoTodo: string;
 
 	public editar: Array<boolean> = [];
 	public todoDescripcionEditado: string;
 
-	ngOnInit(): void {
-		// this.centroService.getAllTodo().subscribe( ( resp: Todo[] ) => {
-		// 	this.items = resp;
-		// 	this.ordenarListaTodo();
-		// } );
+	async ngOnInit(): Promise<void> {
+		this.items = await this.centroService.getAllTodo();
+		this.ordenarListaTodo();
 	}
 
 	ngOnDestroy(): void {
 		this.dragula.unsubscribe();
 	}
 
-	public delete( objetoTodoAEliminar: TodoInterface ): void {
+	public async delete( objetoTodoAEliminar: TodoInterface ): Promise<void> {
 		let i: number;
 		i = 0;
 		this.items.forEach( ( todoElemento: TodoInterface ) => {
@@ -45,50 +43,42 @@ export class CentroComponent implements OnInit, OnDestroy {
 			}
 			i++;
 		} );
-		// this.centroService.deleteTodo( objetoTodoAEliminar ).subscribe( ( resp: any ) => { } );
+		await this.centroService.deleteTodo( objetoTodoAEliminar );
 	}
 
-	public ordenarListaTodo(): void {
+	public async ordenarListaTodo(): Promise<void> {
 		this.items.sort( ( a: TodoInterface, b: TodoInterface ) => {
 			return a.orden - b.orden;
 		} );
+		await this.centroService.editAllTodo( this.items );
 	}
-	public crearTodo(): void {
-		// const ultimoElementoOrden: number = ( this.items[ this.items.length - 1 ].orden + 1 );
-		// const todo: Todo = {
-		// 	id: null,
-		// 	descripcion: this.nuevoTodo,
-		// 	evento_id: null,
-		// 	orden: ultimoElementoOrden
-		// };
-		// this.centroService.createTodo(todo).then(resp => console.log(resp))
-
-		this.centroService.createTodo(null).then(resp => console.log(resp))
-
-		// this.centroService.createTodo( todo ).subscribe(
-		// 	( resp: Todo ) => {
-		// 		this.items.push( resp );
-		// 	}
-		// );
+	public async crearTodo(): Promise<void> {
+		let ultimoElementoOrden: number;
+		if ( this.items[ this.items.length - 1 ] !== undefined ) {
+			ultimoElementoOrden = ( this.items[ this.items.length - 1 ].orden + 1 );
+		} else {
+			ultimoElementoOrden = 0;
+		}
 		const todo: TodoInterface = {
 			id: null,
 			descripcion: this.nuevoTodo,
 			evento_id: null,
-			orden: 0
+			orden: ultimoElementoOrden
 		};
-		this.centroService.createTodo( todo );
+		await this.centroService.createTodo( todo );
+		this.items = await this.centroService.getAllTodo();
 	}
-	public reOrdenar( todoArray: TodoInterface[] ): void {
+	public async reOrdenar( todoArray: TodoInterface[] ): Promise<void> {
 		let orden: number;
 		orden = 0;
 		todoArray.forEach( ( elementoTodo: TodoInterface ) => {
 			elementoTodo.orden = orden;
 			orden++;
 		} );
-		// this.centroService.editAllTodo( todoArray ).subscribe( ( resp: Todo[] ) => { } );
+		await this.centroService.editAllTodo( todoArray );
 	}
 
-	public activarEdicion( todo: TodoInterface,  index: number ): void {
+	public activarEdicion( todo: TodoInterface, index: number ): void {
 		this.editar[ index ] = true;
 		this.todoDescripcionEditado = todo.descripcion;
 		this.editar.forEach( ( elemento: any, indexForEach: number ) => {
