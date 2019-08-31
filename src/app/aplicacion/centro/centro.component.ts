@@ -3,6 +3,7 @@ import { DragulaService } from "ng2-dragula";
 import { Subscription } from "rxjs";
 import { CentroService } from './centro.service';
 import { Todo } from './centro.models';
+import { isUndefined } from "util";
 
 @Component( {
 	selector: "app-centro",
@@ -25,8 +26,6 @@ export class CentroComponent implements OnInit, OnDestroy {
 	public todoDescripcionEditado: string;
 
 	ngOnInit(): void {
-		console.log('hopla')
-		console.log(this.centroService.getAllTodo());
 		// this.centroService.getAllTodo().subscribe( ( resp: Todo[] ) => {
 		// 	this.items = resp;
 		// 	this.ordenarListaTodo();
@@ -55,13 +54,17 @@ export class CentroComponent implements OnInit, OnDestroy {
 		} );
 	}
 	public crearTodo(): void {
-		const ultimoElementoOrden: number = ( this.items[ this.items.length - 1 ].orden + 1 );
-		const todo: Todo = {
-			id: null,
-			descripcion: this.nuevoTodo,
-			evento_id: null,
-			orden: ultimoElementoOrden
-		};
+		// const ultimoElementoOrden: number = ( this.items[ this.items.length - 1 ].orden + 1 );
+		// const todo: Todo = {
+		// 	id: null,
+		// 	descripcion: this.nuevoTodo,
+		// 	evento_id: null,
+		// 	orden: ultimoElementoOrden
+		// };
+		// this.centroService.createTodo(todo).then(resp => console.log(resp))
+
+		this.centroService.createTodo(null).then(resp => console.log(resp))
+
 		// this.centroService.createTodo( todo ).subscribe(
 		// 	( resp: Todo ) => {
 		// 		this.items.push( resp );

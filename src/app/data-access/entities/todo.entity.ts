@@ -10,4 +10,7 @@ export class Todo {
 
 	@Column( { nullable: true } )
 	evento_id: number;
+
+	@Column()
+	orden: number;
 }

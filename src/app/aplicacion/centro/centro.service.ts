@@ -7,7 +7,10 @@ import { Connection, Repository } from "typeorm";
 	providedIn: "root"
 } )
 export class CentroService {
-	constructor( private databaserService: DatabaseService ) { }
+
+	public todoRepository: any;
+
+	constructor( private databaserService: DatabaseService ) {}
 
 	public async getAllTodo(): Promise<any> {
 		let resp = "";
@@ -25,8 +28,18 @@ export class CentroService {
 		return resp;
 	}
 
-	public createTodo( todo: Todo ): void {
+	public async createTodo( todo: Todo ): Promise<any> {
+		todo = {
+			id: 0,
+			descripcion: "primer",
+			evento_id: null,
+			orden: 0
+		}
 		// return this.httpClient.post<Todo>(environment.apiPath + "/todo", todo);
+
+		await this.databaserService.connection.then(conn => {
+			conn.createQueryBuilder().insert().into(Todo).values({id: todo.id, descripcion: todo.descripcion.toString(), evento_id: todo.evento_id, orden: todo.orden}).execute();
+		});
 	}
 
 	public editTodo( todo: Todo ): void {

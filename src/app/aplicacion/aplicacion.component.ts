@@ -11,6 +11,6 @@ export class AplicacionComponent implements OnInit{
 
 	constructor(private databaseService: DatabaseService) {}
 	ngOnInit(): void {
-		this.databaseService.connection.then(resp => {console.log(resp)})
+		this.databaseService.connection.then(resp => { })
 	}
 }
