@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { DragulaService } from "ng2-dragula";
 import { Subscription } from "rxjs";
 import { CentroService } from './centro.service';
-import { Todo } from './centro.models';
+import { TodoInterface } from './centro.models';
 import { isUndefined } from "util";
 
 @Component( {
@@ -19,7 +19,7 @@ export class CentroComponent implements OnInit, OnDestroy {
 		);
 	}
 	public dragula = new Subscription();
-	public items: Array<Todo> = [];
+	public items: Array<TodoInterface> = [];
 	public nuevoTodo: string;
 
 	public editar: Array<boolean> = [];
@@ -36,10 +36,10 @@ export class CentroComponent implements OnInit, OnDestroy {
 		this.dragula.unsubscribe();
 	}
 
-	public delete( objetoTodoAEliminar: Todo ): void {
+	public delete( objetoTodoAEliminar: TodoInterface ): void {
 		let i: number;
 		i = 0;
-		this.items.forEach( ( todoElemento: Todo ) => {
+		this.items.forEach( ( todoElemento: TodoInterface ) => {
 			if ( todoElemento.id === objetoTodoAEliminar.id ) {
 				this.items.splice( i, 1 );
 			}
@@ -49,7 +49,7 @@ export class CentroComponent implements OnInit, OnDestroy {
 	}
 
 	public ordenarListaTodo(): void {
-		this.items.sort( ( a: Todo, b: Todo ) => {
+		this.items.sort( ( a: TodoInterface, b: TodoInterface ) => {
 			return a.orden - b.orden;
 		} );
 	}
@@ -70,18 +70,25 @@ export class CentroComponent implements OnInit, OnDestroy {
 		// 		this.items.push( resp );
 		// 	}
 		// );
+		const todo: TodoInterface = {
+			id: null,
+			descripcion: this.nuevoTodo,
+			evento_id: null,
+			orden: 0
+		};
+		this.centroService.createTodo( todo );
 	}
-	public reOrdenar( todoArray: Todo[] ): void {
+	public reOrdenar( todoArray: TodoInterface[] ): void {
 		let orden: number;
 		orden = 0;
-		todoArray.forEach( ( elementoTodo: Todo ) => {
+		todoArray.forEach( ( elementoTodo: TodoInterface ) => {
 			elementoTodo.orden = orden;
 			orden++;
 		} );
 		// this.centroService.editAllTodo( todoArray ).subscribe( ( resp: Todo[] ) => { } );
 	}
 
-	public activarEdicion( todo: Todo,  index: number ): void {
+	public activarEdicion( todo: TodoInterface,  index: number ): void {
 		this.editar[ index ] = true;
 		this.todoDescripcionEditado = todo.descripcion;
 		this.editar.forEach( ( elemento: any, indexForEach: number ) => {
@@ -91,7 +98,7 @@ export class CentroComponent implements OnInit, OnDestroy {
 		} );
 	}
 
-	public editarTodo( todo: Todo, index: number ): void {
+	public editarTodo( todo: TodoInterface, index: number ): void {
 		todo.descripcion = this.todoDescripcionEditado;
 		// this.centroService.editTodo( todo ).subscribe( ( resp: Todo ) => {
 		// 	this.editar[ index ] = false;

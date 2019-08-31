@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { DatabaseService } from "src/app/data-access/database.service";
 import { Todo } from "src/app/data-access/entities/todo.entity";
 import { Connection, Repository } from "typeorm";
+import { TodoInterface } from "./centro.models";
 
 @Injectable( {
 	providedIn: "root"
@@ -28,13 +29,15 @@ export class CentroService {
 		return resp;
 	}
 
-	public async createTodo( todo: Todo ): Promise<any> {
-		todo = {
-			id: 0,
-			descripcion: "primer",
-			evento_id: null,
-			orden: 0
-		}
+	public async createTodo( todo: TodoInterface ): Promise<void> {
+		let test = new Todo();
+		test.id = todo.id;
+		test.orden = todo.orden;
+		test.descripcion = todo.descripcion;
+		test.evento_id = todo.evento_id;
+
+		console.log(test)
+		await this.databaserService.connection.then( () => test.save())
 		// return this.httpClient.post<Todo>(environment.apiPath + "/todo", todo);
 
 		await this.databaserService.connection.then(conn => {
