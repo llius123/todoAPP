@@ -74,3 +74,4 @@ out-tsc
 app-builds/
 main.js
 .editorconfig
+build
