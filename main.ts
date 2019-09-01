@@ -8,7 +8,7 @@ let win: BrowserWindow = null;
 const args = process.argv.slice(1);
 let serve: boolean = args.some(val => val === '--serve');
 
-function createWindow() {
+async function createWindow() {
 
     win = new BrowserWindow({
 		width: 1400,
@@ -24,7 +24,7 @@ function createWindow() {
         require('electron-reload')(__dirname, {
             electron: require(`${__dirname}/node_modules/electron`)
         });
-        win.loadURL('http://localhost:4200');
+        await win.loadURL('http://localhost:4200/inicio');
         
         // The following is optional and will open the DevTools:
         win.webContents.openDevTools();
