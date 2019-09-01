@@ -7,7 +7,7 @@ import { environment } from "src/environments/environment";
 export class ArribaService {
 	constructor(private httpClient: HttpClient) {}
 
-	public getDataFromCalendar(date: number): Observable<any> {
-		return this.httpClient.get<any>(environment.apiPath);
+	public getDataFromCalendar(date: number): void {
+		// return this.httpClient.get<any>(environment.apiPath);
 	}
 }

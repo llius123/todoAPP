@@ -18,8 +18,8 @@ export class ArribaComponent {
 	 * Obtengo los datos sobre ese dia
 	 */
 	public diaSeleccionado(date: Date): void {
-		this.arribaService
-			.getDataFromCalendar(date.getTime())
-			.subscribe((resp: any) => {}, (error: any) => {});
+		// this.arribaService
+			// .getDataFromCalendar(date.getTime())
+			// .subscribe((resp: any) => {}, (error: any) => {});
 	}
 }
