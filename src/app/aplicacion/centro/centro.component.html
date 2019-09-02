@@ -22,5 +22,5 @@
 	<button (click)="crearTodo()">crear</button>
 </div>
 <p-dialog [(visible)]="displayModalAccionHora" [draggable]="false" [resizable]="false" [modal]="true">
-	<rp-centro-modal-editar-todo></rp-centro-modal-editar-todo>
+	<rp-centro-modal-editar-todo [editarTodoModal]="editarTodoModal"></rp-centro-modal-editar-todo>
 </p-dialog>

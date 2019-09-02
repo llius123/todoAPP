@@ -25,6 +25,8 @@ export class CentroComponent implements OnInit, OnDestroy {
 
 	public displayModalAccionHora: boolean;
 
+	public editarTodoModal: TodoInterface;
+
 	async ngOnInit(): Promise<void> {
 
 		this.items = await this.centroService.getAllTodo();
@@ -113,8 +115,9 @@ export class CentroComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	public expandirTarjeta() {
+	public expandirTarjeta(todo: TodoInterface) {
 		this.displayModalAccionHora = true;
+		this.editarTodoModal = todo;
 	}
 	ngOnDestroy(): void {
 		this.dragula.unsubscribe();

@@ -1,1 +1,9 @@
-modal editor
+<form
+	[formGroup]="editarTodo"
+>
+	Titulo
+	<input formControlName="titulo">
+	Descripcion
+	<input formControlName="descripcion">
+	<button (click)="editar()">Guardar</button>
+</form>
