@@ -5,7 +5,10 @@ export class Todo extends BaseEntity{
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column( { length: 225 } )
+	@Column( { nullable: true } )
+	titulo: string;
+
+	@Column( { nullable: true } )
 	descripcion: string;
 
 	@Column( { nullable: true } )

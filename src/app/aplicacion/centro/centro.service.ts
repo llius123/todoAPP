@@ -32,6 +32,7 @@ export class CentroService {
 		const test = new Todo();
 		test.id = todo.id;
 		test.orden = todo.orden;
+		test.titulo = todo.titulo;
 		test.descripcion = todo.descripcion;
 		test.evento_id = todo.evento_id;
 
@@ -41,7 +42,8 @@ export class CentroService {
 				.into( Todo )
 				.values( {
 					id: todo.id,
-					descripcion: todo.descripcion.toString(),
+					titulo: todo.titulo,
+					descripcion: todo.descripcion,
 					evento_id: todo.evento_id,
 					orden: todo.orden
 				} ).execute();

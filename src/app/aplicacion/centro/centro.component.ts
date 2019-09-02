@@ -12,14 +12,12 @@ import { isUndefined } from "util";
 } )
 export class CentroComponent implements OnInit, OnDestroy {
 	constructor( private dragulaService: DragulaService, private centroService: CentroService ) {
-		this.dragula.add(
-			dragulaService.dropModel( "lista-tareas" ).subscribe( ( data: any ) => {
-				this.reOrdenar( data.targetModel );
-			} )
-		);
+		dragulaService.dropModel( "lista-tareas" ).subscribe( ( data: any ) => {
+			this.reOrdenar( data.targetModel );
+		});
 	}
 	public dragula = new Subscription();
-	public items: TodoInterface[];
+	public items: TodoInterface[] = [];
 	public nuevoTodo: string;
 
 	public editar: Array<boolean> = [];
@@ -28,7 +26,7 @@ export class CentroComponent implements OnInit, OnDestroy {
 	public displayModalAccionHora: boolean;
 
 	async ngOnInit(): Promise<void> {
-		//Obtengo todos los TODO de la bbdd
+
 		this.items = await this.centroService.getAllTodo();
 
 		//Los ordeno
@@ -69,7 +67,8 @@ export class CentroComponent implements OnInit, OnDestroy {
 		}
 		const todo: TodoInterface = {
 			id: null,
-			descripcion: this.nuevoTodo,
+			titulo: this.nuevoTodo,
+			descripcion: null,
 			evento_id: null,
 			orden: ultimoElementoOrden
 		};
@@ -101,6 +100,7 @@ export class CentroComponent implements OnInit, OnDestroy {
 
 	//Edito la descripcion del todo
 	public editarTodo( todo: TodoInterface, index: number ): void {
+		this.dragulaService.cancel( "lista-tareas" ).subscribe(resp => {console.log(resp)})
 		todo.descripcion = this.todoDescripcionEditado;
 		this.items.forEach( async (element: TodoInterface, i: number) => {
 			if ( element.id === todo.id ) {
@@ -114,7 +114,7 @@ export class CentroComponent implements OnInit, OnDestroy {
 	}
 
 	public expandirTarjeta() {
-
+		this.displayModalAccionHora = true;
 	}
 	ngOnDestroy(): void {
 		this.dragula.unsubscribe();

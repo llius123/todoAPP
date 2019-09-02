@@ -23,6 +23,7 @@ export async function migrateV1(connection: any): Promise<void> {
 	await connection.createQueryRunner().query(`
 		CREATE TABLE todo (
 			id integer PRIMARY KEY,
+			titulo text,
 			descripcion text,
 			evento_id integer,
 			FOREIGN KEY (evento_id) REFERENCES evento (id)

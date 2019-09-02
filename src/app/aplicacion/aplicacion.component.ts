@@ -9,7 +9,6 @@ import { DatabaseService } from "../data-access/database.service";
 export class AplicacionComponent implements OnInit{
 
 	constructor(private databaseService: DatabaseService) {}
-	ngOnInit(): void {
-		this.databaseService.connection.then(resp => { })
-	}
+	ngOnInit(): void {}
+
 }
