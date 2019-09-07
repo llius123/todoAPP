@@ -1,4 +1,12 @@
-.fila {
-	border: 1px solid red;
-	height: 50px;
+.centro-container{
+	.fila {
+		border: 1px solid red;
+		height: 50px;
+		margin: 5px;
+		border-radius: 5px;
+		padding: 0 10px 0 10px;
+		display: flex;
+		flex-direction: row;
+	}
 }
+
