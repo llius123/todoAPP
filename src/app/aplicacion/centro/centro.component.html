@@ -1,19 +1,19 @@
 <div class="centro-container">
-	hola
-	<i class="fas fa-arrows-alt-v"></i>
-	<div [dragula]="'lista-tareas'" [(dragulaModel)]="items">
-		<div class="fila" *ngFor="let item of items; let i = index" (click)="expandirTarjeta(item)">
-			<div class="lista-tareas">
-				<i class="fas fa-arrows-alt-v"></i>
+	<div dragula="lista-tareas" [(dragulaModel)]="items">
+		<div class="fila" 
+		*ngFor="let item of items; let i = index" 
+		>
+			<div class="drag">
+				<i class="fas fa-ellipsis-v"></i>
 			</div>
-			<div *ngIf="!editar[i]">
+			<div (click)="expandirTarjeta(item)" class="titulo" *ngIf="!editar[i]">
 				{{ item.titulo }} {{ item.orden }}
 			</div>
-			<div *ngIf="editar[i]">
+			<div (click)="expandirTarjeta(item)" class="titulo" *ngIf="editar[i]">
 				<input type="text" [(ngModel)]="todoDescripcionEditado">
 			</div>
 			<button (click)="activarEdicion(item, i)" *ngIf="!editar[i]">
-				E
+				<i class="far fa-edit"></i>
 			</button>
 			<button (click)="editarTodo(item, i)" *ngIf="editar[i]">
 				G

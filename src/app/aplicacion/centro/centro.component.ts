@@ -12,8 +12,17 @@ import { isUndefined } from "util";
 } )
 export class CentroComponent implements OnInit, OnDestroy {
 	constructor( private dragulaService: DragulaService, private centroService: CentroService ) {
-		dragulaService.dropModel( "lista-tareas" ).subscribe( ( data: any ) => {
-			this.reOrdenar( data.targetModel );
+		// dragulaService.dropModel( "lista-tareas" ).subscribe( ( data: any ) => {
+		// 	console.log(data);
+		// 	this.reOrdenar( data.targetModel );
+		// });
+		// moves: (el, container, handle) => {
+		// 	return handle.className === 'handle';
+		//   }
+		dragulaService.createGroup("lista-tareas", {
+			moves: (el, container, handle) => {
+				return handle.className === "drag" || handle.className === "fas fa-ellipsis-v";
+			}
 		});
 	}
 	public dragula = new Subscription();
