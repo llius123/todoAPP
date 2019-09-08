@@ -16,4 +16,10 @@ export class Todo extends BaseEntity{
 
 	@Column()
 	orden: number;
+
+	@Column({
+		type: "boolean",
+		default: "false"
+	})
+	completado: boolean;
 }

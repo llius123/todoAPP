@@ -81,7 +81,8 @@ export class CentroComponent implements OnInit, OnDestroy {
 			titulo: this.nuevoTodo,
 			descripcion: null,
 			evento_id: null,
-			orden: ultimoElementoOrden
+			orden: ultimoElementoOrden,
+			completado: false
 		};
 		await this.centroService.createTodo( todo );
 		this.items = await this.centroService.getAllTodo();
