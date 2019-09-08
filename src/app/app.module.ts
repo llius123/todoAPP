@@ -7,7 +7,7 @@ import { PrimengModule } from "./primeng.module";
 import { AplicacionComponent } from "./aplicacion/aplicacion.component";
 import { IzquierdaModule } from "./aplicacion/todo/izquierda/izquierda.module";
 import { DerechaModule } from "./aplicacion/todo/derecha/derecha.module";
-import { CentroModule } from "./aplicacion/centro/centro.module";
+import { CentroModule } from "./aplicacion/todo/centro/centro.module";
 import { ServiceModule } from "./aplicacion/services/services.module";
 
 @NgModule({
