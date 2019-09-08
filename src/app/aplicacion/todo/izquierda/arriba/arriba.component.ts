@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { CalendarioService } from "../../services/calendario.service";
 import { ArribaService } from "./arriba.service";
+import { CalendarioService } from "src/app/aplicacion/services/calendario.service";
 
 @Component({
 	selector: "app-izquierda-arriba",

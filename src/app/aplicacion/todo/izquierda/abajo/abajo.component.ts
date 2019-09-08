@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { CalendarioService } from "../../services/calendario.service";
+import { CalendarioService } from "../../../services/calendario.service";
 
 @Component({
 	selector: "app-izquierda-abajo",
