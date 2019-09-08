@@ -1,0 +1,12 @@
+.fila-container{
+	.fila{
+		&-simple{
+			display: flex;
+			flex-direction: row;
+		}
+		&-compleja{
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}
