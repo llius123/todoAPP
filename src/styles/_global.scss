@@ -1,0 +1,58 @@
+/**
+	Ejemplo de como usar esto
+	
+	.hover-derecha-azul{
+		@include hover-derecha1($color1);
+		&:before{
+			@include hover-derecha2($color1);
+		}
+		&:hover, &:focus, &:active{
+			@include hover-derecha3($color1);
+		}
+		&:hover:before, &:focus:before, &:active:before{
+			@include hover-derecha4($color1);
+		}
+	}
+**/
+
+@mixin hover-derecha1($color) {
+	display: inline-block;
+	vertical-align: middle;
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	position: relative;
+	transition-property: color;
+	transition-duration: 0.3s;
+	border: 1px solid $color;
+	border-radius: 1px;
+}
+
+@mixin hover-derecha2($color) {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: $color;
+	transform: scaleX(0);
+	transform-origin: 0 50%;
+	transition-property: transform;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-out;
+	border: 1px solid $color;
+	border-radius: 1px;
+}
+
+@mixin hover-derecha3($color) {
+	color: white;
+	border: 1px solid $color;
+	border-radius: 1px;
+}
+
+@mixin hover-derecha4($color) {
+	transform: scaleX(1);
+	border: 1px solid $color;
+	border-radius: 3.5px;
+}
