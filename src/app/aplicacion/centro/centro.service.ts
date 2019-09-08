@@ -58,7 +58,8 @@ export class CentroService {
 					descripcion: todo.descripcion,
 					evento_id: todo.evento_id,
 					orden: todo.orden,
-					titulo: todo.titulo
+					titulo: todo.titulo,
+					completado: todo.completado
 				} )
 				.where( "id = :id", { id: todo.id } )
 				.execute()

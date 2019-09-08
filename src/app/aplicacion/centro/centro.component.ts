@@ -45,6 +45,8 @@ export class CentroComponent implements OnInit, OnDestroy {
 
 		//Inicializo el modal a false para que este escondido
 		this.displayModalAccionHora = false;
+
+		console.log(this.items)
 	}
 
 	//Elimino un TODO
@@ -120,18 +122,42 @@ export class CentroComponent implements OnInit, OnDestroy {
 	}
 
 	//Cancelar edicion titulo todo
-	public cancelarEdicionTituloTodo(){
+	public cancelarEdicionTituloTodo(): void{
 		this.editar.forEach( ( elemento: any, indexForEach: number ) => {
 			this.editar[ indexForEach ] = false;
 		} );
 	}
 
 	//Activo el modal para editar el titulo y la descripcion del todo
-	public expandirTarjeta(todo: TodoInterface) {
+	public expandirTarjeta(todo: TodoInterface): void {
 		this.displayModalAccionHora = true;
 		this.editarTodoModal = todo;
 	}
 	ngOnDestroy(): void {
 		this.dragula.unsubscribe();
+	}
+
+	//Cambiar un todo de completado a no completado y al reves
+	public async completarTodo(completado: number, todo: TodoInterface): Promise<void> {
+		switch (completado) {
+			case 0:
+				todo.completado = 0;
+				await this.centroService.editTodo(todo);
+				this.items.forEach( ( elemento: TodoInterface, indexForEach: number ) => {
+					if ( elemento.id === todo.id ) {
+						this.items[ indexForEach ] = todo;
+					}
+				} );
+			break;
+			case 1:
+				todo.completado = 1;
+				await this.centroService.editTodo(todo);
+				this.items.forEach( ( elemento: TodoInterface, indexForEach: number ) => {
+					if ( elemento.id === todo.id ) {
+						this.items[ indexForEach ] = todo;
+					}
+				} );
+			break;
+		}
 	}
 }

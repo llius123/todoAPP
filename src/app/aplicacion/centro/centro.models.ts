@@ -4,5 +4,5 @@ export interface TodoInterface {
 	descripcion: string;
 	evento_id: number;
 	orden: number;
-	completado: boolean;
+	completado: number;
 }

@@ -6,8 +6,11 @@
 			<div class="drag">
 				<i class="fas fa-ellipsis-v"></i>
 			</div>
-			<div class="completado">
-				<input type="checkbox" value="{{item.completado}}">
+			<div class="completado" *ngIf="item.completado === 0" (click)="completarTodo(1, item)">
+				<i class="far fa-circle"></i>
+			</div>
+			<div class="completado" *ngIf="item.completado === 1" (click)="completarTodo(0, item)">
+				<i class="far fa-check-circle"></i>
 			</div>
 			<div 
 			(click)="activarEdicion(item, i)" 
