@@ -116,13 +116,16 @@ export class CentroComponent implements OnInit, OnDestroy {
 		this.editar.forEach( ( elemento: any, indexForEach: number ) => {
 			this.editar[ indexForEach ] = false;
 		} );
-		// this.items.forEach( async (element: TodoInterface, i: number) => {
-		// 	if ( element.id === todo.id ) {
-		// 		this.items[i].descripcion = todo.descripcion;
-		// 	}
-		// });
 	}
 
+	//Cancelar edicion titulo todo
+	public cancelarEdicionTituloTodo(){
+		this.editar.forEach( ( elemento: any, indexForEach: number ) => {
+			this.editar[ indexForEach ] = false;
+		} );
+	}
+
+	//Activo el modal para editar el titulo y la descripcion del todo
 	public expandirTarjeta(todo: TodoInterface) {
 		this.displayModalAccionHora = true;
 		this.editarTodoModal = todo;

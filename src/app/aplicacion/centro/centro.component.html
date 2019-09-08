@@ -6,12 +6,16 @@
 			<div class="drag">
 				<i class="fas fa-ellipsis-v"></i>
 			</div>
-			<div (click)="activarEdicion(item, i)" class="titulo" *ngIf="!editar[i]">
+			<div 
+			(click)="activarEdicion(item, i)" 
+			class="titulo" 
+			*ngIf="!editar[i]">
 				{{ item.titulo }} {{ item.orden }}
 			</div>
-			<div class="titulo" *ngIf="editar[i]">
+			<div class="titulo titulo-editando" *ngIf="editar[i]">
 				<input type="text" [(ngModel)]="todoTituloEditado">
 				<button (click)="editarTodo(item, i)">G</button>
+				<button (click)="cancelarEdicionTituloTodo()">X</button>
 			</div>
 			<button (click)="expandirTarjeta(item)" >
 				<i class="fas fa-expand-arrows-alt"></i>
@@ -24,6 +28,10 @@
 	<input [(ngModel)]="nuevoTodo">
 	<button (click)="crearTodo()">crear</button>
 </div>
-<p-dialog [(visible)]="displayModalAccionHora" [draggable]="false" [resizable]="false" [modal]="true">
+<p-dialog 
+[(visible)]="displayModalAccionHora" 
+[draggable]="false" 
+[resizable]="false" 
+[modal]="true">
 	<rp-centro-modal-editar-todo [editarTodoModal]="editarTodoModal"></rp-centro-modal-editar-todo>
 </p-dialog>

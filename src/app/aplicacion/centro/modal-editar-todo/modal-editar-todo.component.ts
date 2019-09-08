@@ -35,7 +35,6 @@ export class CentroModalEditarTodoComponent implements OnInit {
 	public editar(): void {
 		this.todoEditado.titulo = this.editarTodo.get( "titulo" ).value;
 		this.todoEditado.descripcion = this.editarTodo.get( "descripcion" ).value;
-		console.log( this.todoEditado )
-		this.centroService.editTodo( this.todoEditado ).then( resp => { } );
+		this.centroService.editTodo( this.todoEditado ).then( resp => {  } );
 	}
 }
