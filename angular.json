@@ -37,7 +37,12 @@
 			  "node_modules/dragula/dist/dragula.css",
 			  "src/assets/fontawesome/css/all.min.css"
             ],
-            "scripts": []
+			"scripts": [],
+			"stylePreprocessorOptions": {
+				"includePaths": [
+					"src/styles/"
+				]
+			  }
           },
           "configurations": {
             "dev": {
