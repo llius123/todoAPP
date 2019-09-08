@@ -1,10 +1,15 @@
-//Lo mas pequeño que se puede hacer el calendario
+@import "variables";
+
 :host {
 	::ng-deep .ui-datepicker {
 		padding: 0;
+		border: none;
 	}
 	::ng-deep .ui-state-default {
 		padding: 0;
+	}
+	::ng-deep .ui-datepicker-header{
+		border-bottom: 1px solid $color2;
 	}
 }
 
@@ -14,4 +19,16 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	overflow: auto;
+	@media (max-height: 667px){
+		::ng-deep p-calendar{
+			margin-top: 100px;
+		}
+	}
+	@media (max-width: 1087px){
+		::ng-deep p-calendar{
+			padding-left: 40px;
+			padding-right: 7px;
+		}
+	}
 }
