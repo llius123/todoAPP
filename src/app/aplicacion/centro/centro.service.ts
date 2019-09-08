@@ -57,10 +57,14 @@ export class CentroService {
 				.set( {
 					descripcion: todo.descripcion,
 					evento_id: todo.evento_id,
-					orden: todo.orden
+					orden: todo.orden,
+					titulo: todo.titulo
 				} )
 				.where( "id = :id", { id: todo.id } )
-				.execute();
+				.execute()
+				.catch(err => {
+					console.log(err);
+				});
 		} );
 	}
 

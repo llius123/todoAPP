@@ -6,18 +6,19 @@
 			<div class="drag">
 				<i class="fas fa-ellipsis-v"></i>
 			</div>
-			<div (click)="expandirTarjeta(item)" class="titulo" *ngIf="!editar[i]">
+			<div (click)="activarEdicion(item, i)" class="titulo" *ngIf="!editar[i]">
 				{{ item.titulo }} {{ item.orden }}
 			</div>
-			<div (click)="expandirTarjeta(item)" class="titulo" *ngIf="editar[i]">
-				<input type="text" [(ngModel)]="todoDescripcionEditado">
+			<div class="titulo" *ngIf="editar[i]">
+				<input type="text" [(ngModel)]="todoTituloEditado">
+				<button (click)="editarTodo(item, i)">G</button>
 			</div>
-			<button (click)="activarEdicion(item, i)" *ngIf="!editar[i]">
-				<i class="far fa-edit"></i>
+			<button (click)="expandirTarjeta(item)" >
+				<i class="fas fa-expand-arrows-alt"></i>
 			</button>
-			<button (click)="editarTodo(item, i)" *ngIf="editar[i]">
+			<!-- <button (click)="editarTodo(item, i)" *ngIf="editar[i]">
 				G
-			</button>
+			</button> -->
 			<button (click)="delete(item)">
 				X
 			</button>

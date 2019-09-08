@@ -30,7 +30,7 @@ export class CentroComponent implements OnInit, OnDestroy {
 	public nuevoTodo: string;
 
 	public editar: Array<boolean> = [];
-	public todoDescripcionEditado: string;
+	public todoTituloEditado: string;
 
 	public displayModalAccionHora: boolean;
 
@@ -101,7 +101,7 @@ export class CentroComponent implements OnInit, OnDestroy {
 	//Activo la edicion y desactivo todas las otras
 	public activarEdicion( todo: TodoInterface, index: number ): void {
 		this.editar[ index ] = true;
-		this.todoDescripcionEditado = todo.descripcion;
+		this.todoTituloEditado = todo.titulo;
 		this.editar.forEach( ( elemento: any, indexForEach: number ) => {
 			if ( indexForEach !== index ) {
 				this.editar[ indexForEach ] = false;
@@ -110,18 +110,17 @@ export class CentroComponent implements OnInit, OnDestroy {
 	}
 
 	//Edito la descripcion del todo
-	public editarTodo( todo: TodoInterface, index: number ): void {
-		this.dragulaService.cancel( "lista-tareas" ).subscribe(resp => {console.log(resp)})
-		todo.descripcion = this.todoDescripcionEditado;
-		this.items.forEach( async (element: TodoInterface, i: number) => {
-			if ( element.id === todo.id ) {
-				this.items[i].descripcion = todo.descripcion;
-				await this.centroService.editTodo(todo);
-				this.editar.forEach( ( elemento: any, indexForEach: number ) => {
-					this.editar[ indexForEach ] = false;
-				} );
-			}
-		});
+	public async editarTodo( todo: TodoInterface, index: number ): Promise<void> {
+		todo.titulo = this.todoTituloEditado;
+		await this.centroService.editTodo(todo);
+		this.editar.forEach( ( elemento: any, indexForEach: number ) => {
+			this.editar[ indexForEach ] = false;
+		} );
+		// this.items.forEach( async (element: TodoInterface, i: number) => {
+		// 	if ( element.id === todo.id ) {
+		// 		this.items[i].descripcion = todo.descripcion;
+		// 	}
+		// });
 	}
 
 	public expandirTarjeta(todo: TodoInterface) {
