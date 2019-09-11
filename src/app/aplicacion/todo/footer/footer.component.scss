@@ -1,12 +1,58 @@
-@import "buttons";
+@import "global";
 
 .footer{
+	border: 1px solid black;
 	display: flex;
 	flex-direction: row;
-	.derecha,.izquierda{
+	.derecha{
 		width: 20%;
+		height: 100%;
+	}
+	.izquierda{
+		width: 20%;
+		height: 100%;
+		&-contenedor{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			.titulo-texto{
+				align-items: center;
+			}
+			input{
+				width: 200px;;
+				&::placeholder{
+					color: black;
+				}
+				&:focus{
+					&::placeholder{
+						color: white;
+					}
+				}
+			}
+		}
 	}
 	.centro{
+		height: 100%;
 		width: 60%;
+		&-contenedor{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			.titulo-texto{
+				align-items: center;
+			}
+			input{
+				width: 200px;;
+				&::placeholder{
+					color: black;
+				}
+				&:focus{
+					&::placeholder{
+						color: white;
+					}
+				}
+			}
+		}
 	}
 }

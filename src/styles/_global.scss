@@ -1,4 +1,7 @@
 @import "tailwind";
+@import "buttons";
+@import "variables";
+
 /**
 	Ejemplo de como usar esto
 	
@@ -59,7 +62,26 @@
 }
 
 input {
-	@extend .border;
+	@extend .bg-gray-400;
+	@extend .appearance-none;
+	@extend .border-2;
+	@extend .border-gray-200;
 	@extend .rounded;
-	@extend .border-red-500;
+	@extend .w-full;
+	@extend .py-2;
+	@extend .px-4;
+	@extend .text-gray-700;
+	@extend .leading-tight;
+	@extend .border-blue-500;
+	&:focus{
+		@extend .outline-none;
+		@extend .bg-white;
+	}
+}
+
+.titulo-texto {
+	@extend .block;
+	@extend .text-gray-700;
+	@extend .text-sm;
+	@extend .font-bold;
 }

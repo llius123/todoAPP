@@ -9,6 +9,7 @@ import { CentroService } from "../centro/centro.service";
 export class FooterComponent implements OnInit{
 
 	public nuevoTodo: string;
+	public nuevoEvento: string;
 
 	constructor(private centroService: CentroService) {}
 	ngOnInit(): void {}
@@ -17,6 +18,10 @@ export class FooterComponent implements OnInit{
 		if (this.nuevoTodo) {
 			this.centroService.nuevoTodoEventEmitter.emit(this.nuevoTodo);
 		}
+	}
+
+	public crearEvento(){
+		
 	}
 
 }

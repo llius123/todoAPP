@@ -20,17 +20,17 @@
 			</div>
 			<div class="titulo titulo-editando" *ngIf="editar[i]">
 				<input type="text" [(ngModel)]="todoTituloEditado">
-				<button class="boton-icono boton-icono-azul" (click)="editarTodo(item, i)">
+				<button class="boton-icono boton-icono-verde" (click)="editarTodo(item, i)">
 					<i class="fas fa-save"></i>
 				</button>
 				<button class="boton-icono boton-icono-rojo" (click)="cancelarEdicionTituloTodo()">
 					<i class="fas fa-times"></i>
 				</button>
 			</div>
-			<button class="boton-icono boton-icono-azul" (click)="expandirTarjeta(item)" >
+			<button class="boton-icono boton-icono-azul" (click)="expandirTarjeta(item)" *ngIf="!editar[i]" >
 				<i class="fas fa-expand-arrows-alt"></i>
 			</button>
-			<button class="boton-icono boton-icono-rojo" (click)="delete(item)">
+			<button class="boton-icono boton-icono-rojo" (click)="delete(item)" *ngIf="!editar[i]">
 				<i class="fas fa-times"></i>
 			</button>
 		</div>

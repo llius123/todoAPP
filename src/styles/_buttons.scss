@@ -26,5 +26,11 @@
 				@extend .bg-orange-500;
 			}
 		}
+		&-verde{
+			@extend .bg-green-400;
+			&:hover{
+				@extend .bg-green-500;
+			}
+		}
 	}
 }
