@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Connection, ConnectionOptions, createConnection } from 'typeorm';
 import { Settings } from './repositories/settings';
 import { Todo } from './entities/todo.entity';
+import { Evento } from './entities/evento.entity';
 
 @Injectable( {
 	providedIn: 'root'
@@ -17,7 +18,7 @@ export class DatabaseService {
 		this.options = {
 			type: 'sqlite',
 			database: 'database.sqlite',
-			entities: [ Todo ],
+			entities: [ Todo, Evento ],
 			synchronize: true,
 			// logging: 'all',
 		};

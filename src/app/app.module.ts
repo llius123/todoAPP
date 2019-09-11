@@ -9,6 +9,7 @@ import { IzquierdaModule } from "./aplicacion/todo/izquierda/izquierda.module";
 import { DerechaModule } from "./aplicacion/todo/derecha/derecha.module";
 import { CentroModule } from "./aplicacion/todo/centro/centro.module";
 import { ServiceModule } from "./aplicacion/services/services.module";
+import { FooterModule } from "./aplicacion/todo/footer/footer.module";
 
 @NgModule({
 	declarations: [AppComponent, AplicacionComponent],
@@ -19,7 +20,8 @@ import { ServiceModule } from "./aplicacion/services/services.module";
 		IzquierdaModule,
 		DerechaModule,
 		CentroModule,
-		ServiceModule
+		ServiceModule,
+		FooterModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

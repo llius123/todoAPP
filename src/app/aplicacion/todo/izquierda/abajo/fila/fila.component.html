@@ -1,7 +1,24 @@
 <div class="fila-container">
 	<div class="fila-compleja" *ngIf="isArray()">
 		<div  *ngFor="let objeto of objetos">
-			{{ objeto.descripcion }}
+			<div class="data">
+				{{ objeto.descripcion }}
+			</div>
+			<div class="botones">
+				<button>
+					E
+				</button>
+				<button>
+					X
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="fila-simple" *ngIf="!isArray()">
+		<div class="data">
+			{{ objetos }}
+		</div>
+		<div class="botones">
 			<button>
 				E
 			</button>
@@ -9,14 +26,5 @@
 				X
 			</button>
 		</div>
-	</div>
-	<div class="fila-simple" *ngIf="!isArray()">
-		{{ objetos }}
-		<button>
-			E
-		</button>
-		<button>
-			X
-		</button>
 	</div>
 </div>

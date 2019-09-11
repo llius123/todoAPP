@@ -24,6 +24,11 @@ export class CentroComponent implements OnInit, OnDestroy {
 				return handle.className === "drag" || handle.className === "fas fa-ellipsis-v";
 			}
 		});
+
+		this.centroService.nuevoTodoEventEmitter.subscribe(titulo => {
+			this.nuevoTodo = titulo;
+			this.crearTodo();
+		});
 	}
 	public dragula = new Subscription();
 	public items: TodoInterface[] = [];
@@ -46,7 +51,6 @@ export class CentroComponent implements OnInit, OnDestroy {
 		//Inicializo el modal a false para que este escondido
 		this.displayModalAccionHora = false;
 
-		console.log(this.items)
 	}
 
 	//Elimino un TODO

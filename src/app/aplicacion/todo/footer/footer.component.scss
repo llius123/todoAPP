@@ -1,0 +1,10 @@
+.footer{
+	display: flex;
+	flex-direction: row;
+	.derecha,.izquierda{
+		width: 20%;
+	}
+	.centro{
+		width: 60%;
+	}
+}

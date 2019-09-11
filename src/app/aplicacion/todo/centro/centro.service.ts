@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { DatabaseService } from "src/app/data-access/database.service";
 import { Todo } from "src/app/data-access/entities/todo.entity";
 import { Connection, Repository } from "typeorm";
@@ -10,6 +10,8 @@ import { TodoInterface } from "./centro.models";
 export class CentroService {
 
 	public todoRepository: any;
+
+	public nuevoTodoEventEmitter: EventEmitter<string> = new EventEmitter<string>();
 
 	constructor( private databaserService: DatabaseService ) { }
 

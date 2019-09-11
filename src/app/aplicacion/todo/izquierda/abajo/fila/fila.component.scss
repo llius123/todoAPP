@@ -3,10 +3,16 @@
 		&-simple{
 			display: flex;
 			flex-direction: row;
+			justify-content: space-between;
 		}
 		&-compleja{
 			display: flex;
 			flex-direction: column;
+			div {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
 		}
 	}
 }
