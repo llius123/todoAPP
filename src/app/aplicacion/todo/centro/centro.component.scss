@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'global';
+@import "buttons";
 
 .centro-container{
 	.fila {
@@ -10,18 +11,7 @@
 		padding: 0 10px 0 0px;
 		display: flex;
 		flex-direction: row;
-		&:hover{
-			background-color: $color4;
-		}
 		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-		button {
-			padding: 0 10px;
-			margin: 5px 0 5px 2.5px;
-			border: 1.5px solid $negro;
-			border-radius: 6px;
-			width: 35px;
-			height: 35px;
-		}
 		.completado {
 			display: flex;
 			align-items: center;
@@ -30,10 +20,10 @@
 			cursor: pointer;
 			padding: 0 5px;
 			&-si{
-				color: $verde;
+				color: $colorBotonVerde;
 			}
 			&-no{
-				color: $rojo;
+				color: $colorBotonRojo;
 			}
 		}
 	}
@@ -79,29 +69,29 @@
 .hover-derecha-azul{
 	cursor: pointer;
 	background-color: white;
-	@include hover-derecha1($color1);
+	@include hover-derecha1($colorBotonAzul);
 	&:before{
-		@include hover-derecha2($color1);
+		@include hover-derecha2($colorBotonAzul);
 	}
 	&:hover, &:focus, &:active{
-		@include hover-derecha3($color1);
+		@include hover-derecha3($colorBotonAzul);
 	}
 	&:hover:before, &:focus:before, &:active:before{
-		@include hover-derecha4($color1);
+		@include hover-derecha4($colorBotonAzul);
 	}
 }
 
 .hover-derecha-rojo{
 	cursor: pointer;
 	background-color: white;
-	@include hover-derecha1($rojo);
+	@include hover-derecha1($colorBotonRojo);
 	&:before{
-		@include hover-derecha2($rojo);
+		@include hover-derecha2($colorBotonRojo);
 	}
 	&:hover, &:focus, &:active{
-		@include hover-derecha3($rojo);
+		@include hover-derecha3($colorBotonRojo);
 	}
 	&:hover:before, &:focus:before, &:active:before{
-		@include hover-derecha4($rojo);
+		@include hover-derecha4($colorBotonRojo);
 	}
 }

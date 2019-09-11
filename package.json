@@ -28,16 +28,16 @@
     "ng:serve:web": "npm run postinstall:web && npm run electron:tsc  && ng serve -o",
     "postinstall": "npm run postinstall:electron && npx electron-builder install-app-deps",
     "postinstall:web": "node postinstall-web",
-	"postinstall:electron": "node postinstall",
-	"migration": "ts-node ./src/app/migration/migration.ts"
+    "postinstall:electron": "node postinstall",
+    "migration": "ts-node ./src/app/migration/migration.ts"
   },
   "private": true,
   "dependencies": {
-    "sqlite3": "^4.0.9",
-    "typeorm": "^0.2.18",
     "ng2-dragula": "^2.1.1",
     "primeicons": "^2.0.0",
-    "primeng": "^8.0.2"
+    "primeng": "^8.0.2",
+    "sqlite3": "^4.0.9",
+    "typeorm": "^0.2.18"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^8.0.2",

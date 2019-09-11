@@ -1,3 +1,4 @@
+@import "tailwind";
 /**
 	Ejemplo de como usar esto
 	
@@ -55,4 +56,10 @@
 	transform: scaleX(1);
 	border: 1px solid $color;
 	border-radius: 3.5px;
+}
+
+input {
+	@extend .border;
+	@extend .rounded;
+	@extend .border-red-500;
 }

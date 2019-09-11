@@ -1,0 +1,30 @@
+@import "variables";
+@import "tailwind";
+
+.boton{
+	&-icono{
+		@extend .font-bold;
+		@extend .py-2;
+		@extend .px-4;
+		@extend .rounded-full;
+		@extend .m-1;
+		&-azul{
+			@extend .bg-blue-400;
+			&:hover{
+				@extend .bg-blue-500;
+			}
+		}
+		&-rojo{
+			@extend .bg-red-400;
+			&:hover{
+				@extend .bg-red-500;
+			}
+		}
+		&-amarillo{
+			@extend .bg-orange-400;
+			&:hover{
+				@extend .bg-orange-500;
+			}
+		}
+	}
+}
