@@ -3,6 +3,7 @@ import { TodoInterface } from "../centro.models";
 import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
 import { DatabaseService } from "src/app/data-access/database.service";
 import { CentroService } from "../centro.service";
+import { CalendarioService } from "src/app/aplicacion/services/calendario.service";
 
 @Component( {
 	selector: "rp-centro-modal-editar-todo",
@@ -23,18 +24,22 @@ export class CentroModalEditarTodoComponent implements OnInit {
 	public editarTodo: FormGroup;
 	public todoEditado: TodoInterface;
 
-	constructor( private formBuilder: FormBuilder, private centroService: CentroService ) {
+	public es: any = this.calendarioService.es;
+
+	constructor( private formBuilder: FormBuilder, private centroService: CentroService, private calendarioService: CalendarioService ) {
 	}
 	ngOnInit(): void {
 		this.editarTodo = new FormGroup( {
 			titulo: new FormControl(),
-			descripcion: new FormControl()
+			descripcion: new FormControl(),
+			evento: new FormControl(),
 		} );
 	}
 
 	public editar(): void {
-		this.todoEditado.titulo = this.editarTodo.get( "titulo" ).value;
-		this.todoEditado.descripcion = this.editarTodo.get( "descripcion" ).value;
-		this.centroService.editTodo( this.todoEditado ).then( resp => {  } );
+		// this.todoEditado.titulo = this.editarTodo.get( "titulo" ).value;
+		// this.todoEditado.descripcion = this.editarTodo.get( "descripcion" ).value;
+		// this.centroService.editTodo( this.todoEditado ).then( resp => {  } );
+		console.log(this.editarTodo.getRawValue());
 	}
 }

@@ -33,4 +33,39 @@
 			}
 		}
 	}
+	&-texto-icono {
+		padding: 5px 15px 5px 15px;
+		border: none;
+		border-radius: 10px;
+		&:focus {
+			outline: none;
+		}
+		i {
+			margin-right: 5px;
+		}
+		&-azul{
+			@extend .bg-blue-400;
+			&:hover{
+				@extend .bg-blue-500;
+			}
+		}
+		&-rojo{
+			@extend .bg-red-400;
+			&:hover{
+				@extend .bg-red-500;
+			}
+		}
+		&-amarillo{
+			@extend .bg-orange-400;
+			&:hover{
+				@extend .bg-orange-500;
+			}
+		}
+		&-verde{
+			@extend .bg-green-400;
+			&:hover{
+				@extend .bg-green-500;
+			}
+		}
+	}
 }

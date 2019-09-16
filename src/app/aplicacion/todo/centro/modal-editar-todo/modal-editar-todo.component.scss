@@ -1,0 +1,38 @@
+@import "tailwind";
+@import "global";
+
+:host {
+	.container-modal{
+		form {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	::ng-deep .ui-inputtext{
+		@extend input;
+	}
+
+	::ng-deep .ui-datepicker{
+		padding: 0;
+	}
+
+	::ng-deep .ui-datepicker-calendar{
+		& > tbody > tr > td {
+			padding: 0;
+		}
+	}
+	input {
+		@extend .bg-gray-400;
+		@extend .appearance-none;
+		@extend .border-2;
+		@extend .border-gray-200;
+		@extend .rounded;
+		@extend .w-full;
+		@extend .py-2;
+		@extend .px-4;
+		@extend .text-gray-700;
+		@extend .leading-tight;
+		@extend .border-blue-500;
+	}
+
+}

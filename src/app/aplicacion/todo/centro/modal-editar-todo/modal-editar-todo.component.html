@@ -1,9 +1,32 @@
-<form
-	[formGroup]="editarTodo"
->
-	Titulo
-	<input formControlName="titulo">
-	Descripcion
-	<input formControlName="descripcion">
-	<button (click)="editar()">Guardar</button>
-</form>
+<div class="container-modal">
+	<form [formGroup]="editarTodo">
+		<div class="label">
+			Titulo
+		</div>
+		<div class="input">
+			<input formControlName="titulo">
+		</div>
+		<div class="label">
+			Descripcion
+		</div>
+		<div class="input">
+			<input formControlName="descripcion">
+		</div>
+		<div class="label">
+			Añadir evento
+		</div>
+		<div class="input">
+			<p-calendar
+				[locale]="es"
+				[showIcon]="false"
+				formControlName="evento"
+			></p-calendar>
+		</div>
+		<div class="button">
+			<button class="boton-texto-icono boton-texto-icono-verde" (click)="editar()">
+				<i class="fas fa-save"></i>
+				Guardar
+			</button>
+		</div>
+	</form>
+</div>

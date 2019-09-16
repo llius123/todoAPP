@@ -6,9 +6,10 @@ import { CentroService } from "./centro.service";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrimengModule } from "src/app/primeng.module";
 import { CentroModalEditarTodoComponent } from "./modal-editar-todo/modal-editar-todo.component";
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
 	declarations: [CentroComponent, CentroModalEditarTodoComponent],
-	imports: [DragulaModule.forRoot(), BrowserModule, FormsModule, PrimengModule, ReactiveFormsModule],
+	imports: [DragulaModule.forRoot(), BrowserModule, FormsModule, PrimengModule, ReactiveFormsModule, CalendarModule],
 	exports: [CentroComponent],
 	providers: [CentroService]
 })
