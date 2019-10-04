@@ -23,6 +23,7 @@ export class CentroModalEditarTodoComponent implements OnInit {
 	}
 	public editarTodo: FormGroup;
 	public todoEditado: TodoInterface;
+	public evento: Date;
 
 	public es: any = this.calendarioService.es;
 
@@ -31,8 +32,7 @@ export class CentroModalEditarTodoComponent implements OnInit {
 	ngOnInit(): void {
 		this.editarTodo = new FormGroup( {
 			titulo: new FormControl(),
-			descripcion: new FormControl(),
-			evento: new FormControl(),
+			descripcion: new FormControl()
 		} );
 	}
 
@@ -40,6 +40,6 @@ export class CentroModalEditarTodoComponent implements OnInit {
 		// this.todoEditado.titulo = this.editarTodo.get( "titulo" ).value;
 		// this.todoEditado.descripcion = this.editarTodo.get( "descripcion" ).value;
 		// this.centroService.editTodo( this.todoEditado ).then( resp => {  } );
-		console.log(this.editarTodo.getRawValue());
+		console.log(this.evento);
 	}
 }
